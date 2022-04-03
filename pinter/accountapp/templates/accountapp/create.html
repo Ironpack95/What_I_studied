@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<!-- action속성은 그 url로 요청을 보낸다는 것-->
+  <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+    <h4 style="margin-bottom: 2rem;"> Sign Up </h4>
+    <form action="{% url 'accountapp:create' %}" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+
+      <input type="submit" class="btn btn-dark rounded-pill col-4 mt-3">
+
+    </form>
+
+  </div>
+{% endblock %}

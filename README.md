@@ -1,0 +1,1 @@
+<img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=2,4,19&height=300&section=header&text=What%20I%20studied&fontSize=90&fontColor=9834eb&desc=This%20is%20what%20I%20did%20to%20become%20a%20developer%20and%20what%20I'm%20doing&descSize=15&&descAlignY=64&descAlign=61.6"/>

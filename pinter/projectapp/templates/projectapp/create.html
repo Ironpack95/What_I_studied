@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+    <h4 style="margin-bottom: 2rem;"> Create Project </h4>
+    <form action="{% url 'projectapp:create' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+
+      <input type="submit" class="btn btn-dark rounded-pill col-4 mt-3">
+
+    </form>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="text-align: center; font-family: 'NanumSquareB'; max-width: 500px; margin: 4rem auto; ">
+    <!--프로필이 존재할 때 : 이미지, 닉네임 등 다 보여줌-->
+    {% if target_user.profile %}
+    <img src="{{ target_user.profile.image.url }}" style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;">
+    <h2>
+        {{ target_user.profile.nickname }}
+        {% if target_user == user %}
+        <a class="material-icons"
+           style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
+           href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+            edit
+        </a>
+        {% endif %}
+    </h2>
+    <h6>
+        {{ target_user.profile.message }}
+    </h6>
+
+    {% else %}
+        {% if target_user == user %}
+         <a href="{% url 'profileapp:create' %}">
+            <h2>
+                Create Profile
+            </h2>
+         </a>
+        {% else %}
+        <h4> 닉네임 미설정 </h4>
+        {% endif %}
+    {% endif %}
+
+    {% if target_user == user %}
+    <a class="material-icons"
+       style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem; margin: .5rem .7rem 1rem .7rem;"
+       href="{% url 'accountapp:update' pk=user.pk %}">
+        build
+    </a>
+
+    <a class="material-icons"
+       style="box-shadow: 0 0 4px #fcc; border-radius: 10rem; padding: .4rem; margin: .5rem .7rem 1rem .7rem;"
+       href="{% url 'accountapp:delete' pk=user.pk %}">
+        clear
+    </a>
+    {% endif %}
+</div>
+
+    <div>
+
+    {% include 'snippets/list_fragment.html' with article_list=object_list %}
+
+    </div>
+
+
+{% endblock %}
